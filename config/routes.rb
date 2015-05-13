@@ -6,4 +6,8 @@ Rails.application.routes.draw do
   end
 
   root 'categories#index'
+
+  devise_scope :user do
+    get "sign_in", to: "devise/sessions#new"
+  end
 end

@@ -1,6 +1,6 @@
 class CategoriesController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit, :update, :destroy, :create]
-  
+
   expose(:categories)
   expose(:category)
   expose(:product) { Product.new }
@@ -23,6 +23,7 @@ class CategoriesController < ApplicationController
     if category.save
       redirect_to category, notice: 'Category was successfully created.'
     else
+      @request.env["devise.mapping"] = Devise.mappings[:user]
       render action: 'new'
     end
   end

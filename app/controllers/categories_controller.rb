@@ -1,5 +1,6 @@
 class CategoriesController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit, :update, :destroy, :create]
+  before_action :authenticate_admin!
 
   expose(:categories)
   expose(:category)
@@ -9,19 +10,21 @@ class CategoriesController < ApplicationController
   end
 
   def show
+
   end
 
   def new
+    redirect_to new_user_session_path
   end
 
   def edit
   end
 
   def create
-    self.category = Category.new(category_params)
 
+    self.category = Category.new(category_params)
     if category.save
-      redirect_to category, notice: 'Category was successfully created.'
+      redirect_to new_user_session_path, notice: 'Category was successfully created.'
     else
       @request.env["devise.mapping"] = Devise.mappings[:user]
       render action: 'new'
@@ -44,5 +47,13 @@ class CategoriesController < ApplicationController
   private
     def category_params
       params.require(:category).permit(:name)
+    end
+
+    def authenticate_admin!
+      if current_user.admin?
+        redirect_to(Category.last || root_path)
+      else
+        redirect_to new_user_session_path
+      end
     end
 end

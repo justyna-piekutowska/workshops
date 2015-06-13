@@ -24,16 +24,16 @@ class CategoriesController < ApplicationController
 
     self.category = Category.new(category_params)
     if category.save
-      redirect_to new_user_session_path, notice: 'Category was successfully created.'
+      redirect_to category_path(category), notice: 'Category was successfully created.'
     else
-      @request.env["devise.mapping"] = Devise.mappings[:user]
+      request.env["devise.mapping"] = Devise.mappings[:user]
       render action: 'new'
     end
   end
 
   def update
     if category.update(category_params)
-      redirect_to category, notice: 'Category was successfully updated.'
+      redirect_to category_path(category), notice: 'Category was successfully updated.'
     else
       render action: 'edit'
     end
@@ -50,9 +50,7 @@ class CategoriesController < ApplicationController
     end
 
     def authenticate_admin!
-      if current_user.admin?
-        redirect_to(Category.last || root_path)
-      else
+      unless current_user.admin?
         redirect_to new_user_session_path
       end
     end

@@ -6,7 +6,7 @@ class ProductsController < ApplicationController
   expose_decorated(:reviews, ancestor: :product)
 
   before_filter :authenticate_user!
-  before_action :another_user!
+  before_action :another_user!, only: [:update, :edit]
 
   def index
   end
@@ -18,6 +18,7 @@ class ProductsController < ApplicationController
   end
 
   def edit
+    redirect_to category_product_url(params[:category_id], params[:id]), flash: {error: 'You are not allowed to edit this product.'}
   end
 
   def create
@@ -51,9 +52,9 @@ class ProductsController < ApplicationController
     params.require(:product).permit(:title, :description, :price, :category_id)
   end
   def another_user!
-    if current_user
+    if product.user == current_user
     else
-      expect(controller.flash[:error]).to eq 'You are not allowed to edit this product.'
+      redirect_to(category_product_url(category, product), flash: {error: 'You are not allowed to edit this product.'})
     end
   end
 end

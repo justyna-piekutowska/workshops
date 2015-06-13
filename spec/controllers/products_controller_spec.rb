@@ -43,6 +43,7 @@ describe ProductsController do
       controller.stub(:current_user).and_return(user2)
       controller.stub(:authenticate_user!).and_return(user2)
       product.user = user
+      product.save!
     end
 
     describe 'GET edit' do
@@ -123,6 +124,7 @@ describe ProductsController do
           controller.stub(:current_user).and_return(user)
           controller.stub(:authenticate_user!).and_return(user)
           product.user = user
+          product.save!
         end
 
         it 'creates a new Product' do
@@ -171,6 +173,7 @@ describe ProductsController do
         controller.stub(:current_user).and_return(user)
         controller.stub(:authenticate_user!).and_return(user)
         product.user = user
+        product.save!
       end
 
       describe 'with valid params' do
@@ -219,6 +222,7 @@ describe ProductsController do
         controller.stub(:current_user).and_return(user)
         controller.stub(:authenticate_user!).and_return(user)
         product.user = user
+        product.save!
       end
 
       it 'destroys the requested product' do

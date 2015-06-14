@@ -78,6 +78,20 @@ describe ProductsController do
         end
       end
     end
+
+    describe 'DELETE destroy' do
+      describe 'with valid params' do
+        it 'redirects to product page' do
+          delete :destroy, { id: product.to_param, category_id: category.to_param }
+          expect(response).to redirect_to(category_product_url(category, product))
+        end
+
+        it 'renders error message' do
+          delete :destroy, { id: product.to_param, category_id: category.to_param }
+          expect(controller.flash[:error]).to eq 'You are not allowed to edit this product.'
+        end
+      end
+    end
   end
 
   describe 'GET index' do

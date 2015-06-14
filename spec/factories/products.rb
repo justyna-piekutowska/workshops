@@ -4,6 +4,6 @@ FactoryGirl.define do
     description "MyText"
     price 1.5
     user
-    category
+    category { Category.first || create(:category) }
   end
 end

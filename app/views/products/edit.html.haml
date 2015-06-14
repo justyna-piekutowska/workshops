@@ -4,4 +4,5 @@
 
 = link_to 'Show', category_product_path(category, product)
 \|
-= link_to 'Back', category_path(category)
+- if current_user.admin?
+  = link_to 'Back', category_path(category)

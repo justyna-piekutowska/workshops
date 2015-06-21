@@ -1,22 +1,13 @@
-%h1 Listing products
+%h1
+  Products in
+  = category.name
+- products.each do |product|
+  %div
+    %h2
+      = link_to product.title, category_product_path(category, product)
+      = product.price.to_s(:currency, precision: 2)
 
-%table.table.table-striped
-  %tr
-    %th Title
-    %th Description
-    %th Price
-    %th
-    %th
-    %th
-
-  - products.each do |product|
-    %tr
-      %td= product.title
-      %td= product.description
-      %td= product.price
-      %td= link_to 'Show', category_product_path(product.category, product)
+    %p
       - if product.user == current_user
-        %td= link_to 'Edit', edit_category_product_path(product.category, product)
-        %td= link_to 'Destroy', category_product_path(product.category, product), method: :delete, data: { confirm: 'Are you sure?' }
-
-%br
+        = link_to 'Edit', edit_category_product_path(product.category, product), class: "btn btn-primary"
+        = link_to 'Destroy', category_product_path(product.category, product), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-primary"

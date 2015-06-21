@@ -1,19 +1,11 @@
-%h1 Listing categories
-
-%table.table
-  %tr
-    %th Name
-    %th
-    %th
-    %th
-
+%h1 Categories
+%ul
   - categories.each do |category|
-    %tr
-      %td= category.name
-      %td= link_to 'Show', category
+    %li
+      = link_to category.name, category_path(category)
       -if user_signed_in? && current_user.admin?
-        %td= link_to 'Edit', edit_category_path(category)
-        %td= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' }
+        %td= link_to 'Edit', edit_category_path(category), class: "btn btn-default"
+        %td= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default"
 
 %br
 -if user_signed_in? && current_user.admin?

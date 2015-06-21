@@ -20,6 +20,7 @@ gem 'travis'
 gem 'ffaker'
 gem 'konf'
 gem 'haml-contrib'
+gem 'rails_12factor', group: :production
 
 group :development do
   gem 'spring'

@@ -8,9 +8,10 @@
 %p
   = link_to category.name, category_path(category)
   = product.price.to_s(:currency, precision: 2)
-%p
-  Average rating:
-  = product.average_rating.to_s(:rounded, precision: 2)
+-if product.average_rating
+  %p
+    Average rating:
+    = product.average_rating.to_s(:rounded, precision: 2)
 %p
   = product.description
 

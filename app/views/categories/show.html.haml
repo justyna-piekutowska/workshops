@@ -1,24 +1,23 @@
 %p#notice= notice
 
-%p
-  %b Name:
+%h1
   = category.name
 
-%p
-  %b Product title:
+%h2
+  Products
+%ul
   - category.products.each do |product|
-    %ul
-      %li
+    %li
       -if user_signed_in?
         = link_to product.title, category_product_path(category.id, product.id)
       -else
         = product.title
 
--if user_signed_in? && current_user.admin?
+-if user_signed_in?
   %p
     %h3 New product
     = render 'products/form'
-
+-if user_signed_in? && current_user.admin?
   = link_to 'Edit', edit_category_path(category)
   \|
 = link_to 'Back', categories_path, class: 'btn btn-primary'

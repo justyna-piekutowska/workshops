@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
+  expose(:user)
+  expose_decorated(:reviews, ancestor: :user) { user.reviews.last(5) }
 
   def show
-    @user = User.find(params[:id])
-    @reviews = @user.reviews.last(5)
   end
 end

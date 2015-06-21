@@ -10,8 +10,9 @@
   = product.price.to_s(:currency, precision: 2)
 -if product.average_rating
   %p
-    Average rating:
-    = product.average_rating.to_s(:rounded, precision: 2)
+    - product.average_rating.round.times do
+      %span.glyphicon.glyphicon-star-empty.rating
+
 %p
   = product.description
 

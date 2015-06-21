@@ -1,5 +1,7 @@
-%p#notice= notice
-%p#error= flash[:error]
+-if notice != nil
+  %p.alert.alert-info#notice= notice
+-if product.user != current_user
+  %p.alert.alert-danger#error= flash[:error]
 
 %p
   %b Title:

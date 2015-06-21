@@ -1,27 +1,30 @@
-%h1
+.col-md-3.left-panel.col-height
+  = gravatar_for(@user)
+  %p.text-center
+    %strong
+      = @user.email
 
-  = @user.firstname
+.col-md-9.col-height
+  .main
+    %h1
+      .text-center
+        = @user.firstname
 
-  = @user.lastname
-
-= gravatar_for @user
-
-%p
-  Email:
-  = @user.email
-
-%div
-  My reviews:
-  %ol
-  - @reviews.each do |review|
-    %li
-    Product name:
-    = review.product.title if review.product
-    %li
-    Review content:
-    = review.content
-    %li
-    Rate:
-    = review.rating
-    %li Date
-    = review.created_at.to_date.strftime('%d-%m-%Y')
+        = @user.lastname
+    %h2
+      My reviews:
+    -@reviews.each do |review|
+      %ul
+        %li
+          %strong Product name:
+          = review.product.title if review.product
+        %li
+          %strong Review content:
+          = review.content
+        %li
+          %strong Rate:
+          = review.rating
+        %li
+          %strong Date
+          = review.created_at.to_date.strftime('%d-%m-%Y')
+        %hr

@@ -3,7 +3,7 @@
     = gravatar_for(user)
     %p.text-center
       %strong
-        = user.email
+        = mail_to user.email
 
   .col-md-9.col-height
     .main

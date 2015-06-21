@@ -21,6 +21,7 @@ gem 'ffaker'
 gem 'konf'
 gem 'haml-contrib'
 gem 'rails_12factor', group: :production
+gem 'puma'
 
 group :development do
   gem 'spring'

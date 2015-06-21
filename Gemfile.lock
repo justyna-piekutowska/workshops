@@ -129,6 +129,8 @@ GEM
       coderay (~> 1.0)
       method_source (~> 0.8)
       slop (~> 3.4)
+    puma (2.11.3)
+      rack (>= 1.1, < 2.0)
     pusher-client (0.6.0)
       json
       websocket (~> 1.0)
@@ -243,6 +245,7 @@ DEPENDENCIES
   konf
   pg
   pry
+  puma
   quiet_assets
   rails (= 4.1.8)
   rails_12factor

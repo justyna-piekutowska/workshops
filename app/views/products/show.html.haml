@@ -1,6 +1,6 @@
 -if notice != nil
   %p.alert.alert-info#notice= notice
--if product.user != current_user
+-if flash[:error] != nil
   %p.alert.alert-danger#error= flash[:error]
 
 %p

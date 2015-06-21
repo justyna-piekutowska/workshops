@@ -61,11 +61,15 @@ product1 = category.products.create! title: "Gluten free Pene Pasta",
                   and it makes an excellent choice for meal planning.
                   This pasta is gluten, wheat and dairy free,
                   and it is an ideal meal solution for individuals who have dietary restrictions.",
-                price: "$2"
+                price: 5,
+                category_id: 1,
+                user_id: 4
 
 product2 = category.products.create! title: "Dark chocolate",
                 description: "90% dak chocolate with deep aroma. With unforgetable taste.",
-                price: "$3"
+                price: 7,
+                category_id: 1,
+                user_id: 1
 
 
 # Review

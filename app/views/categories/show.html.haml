@@ -9,7 +9,11 @@
   - category.products.each do |product|
     %ul
       %li
+      -if user_signed_in?
+        = link_to product.title, category_product_path(category.id, product.id)
+      -else
         = product.title
+
 -if user_signed_in? && current_user.admin?
   %p
     %h3 New product

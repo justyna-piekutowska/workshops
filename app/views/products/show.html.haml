@@ -3,23 +3,21 @@
 -if flash[:error] != nil
   %p.alert.alert-danger#error= flash[:error]
 
-%p
-  %b Title:
+%h1
   = product.title
 %p
-  %b Description:
+  = link_to category.name, category_path(category)
+  = product.price.to_s(:currency, precision: 2)
+%p
+  Average rating:
+  = product.average_rating.to_s(:rounded, precision: 2)
+%p
   = product.description
-%p
-  %b Price:
-  = product.price
 
-%p
-  %b Category
-  = product.category.name
 %h3 Reviews
+= render reviews
 = render 'reviews/form'
 
-= render reviews
 -if product.user == current_user
   = link_to 'Edit', edit_category_product_path(category.id, product.id)
   \|

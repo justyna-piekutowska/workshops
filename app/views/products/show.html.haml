@@ -16,12 +16,11 @@
 %p
   %b Category
   = product.category.name
-
 %h3 Reviews
 = render 'reviews/form'
 
 = render reviews
-- if product.user = current_user
+-if product.user == current_user
   = link_to 'Edit', edit_category_product_path(category.id, product.id)
-\|
+  \|
 = link_to 'Back', category_products_path, class: 'btn btn-primary'

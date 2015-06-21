@@ -14,7 +14,9 @@ class CategoriesController < ApplicationController
   end
 
   def new
-    redirect_to new_user_session_path
+    unless current_user.admin?
+      redirect_to new_user_session_path
+    end
   end
 
   def edit

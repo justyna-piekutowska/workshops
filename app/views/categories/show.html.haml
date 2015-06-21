@@ -5,8 +5,11 @@
   = category.name
 
 %p
+  %b Product title:
   - category.products.each do |product|
-    = product.title
+    %ul
+      %li
+        = product.title
 -if user_signed_in? && current_user.admin?
   %p
     %h3 New product

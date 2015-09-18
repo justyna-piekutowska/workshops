@@ -1,21 +1,23 @@
 %h1
   = category.name
 
-%h2
-  Products
-%ul
+%table
+  %th Products
+  %th Rating
+  %th Price
   - category.products.each do |product|
-    %li
-      -if user_signed_in?
-        = link_to product.title, category_product_path(category.id, product.id)
-      -else
-        = product.title
+    %tr
+      %td= link_to product.title, category_product_path(category.id, product.id)
+      %td
+        - product.average_rating.round.times do
+          %span.glyphicon.glyphicon-star-empty.rating
+      %td= product.price
 
--if user_signed_in?
-  %p
-    %h3 New product
-    = render 'products/form'
--if user_signed_in? && current_user.admin?
-  = link_to 'Edit', edit_category_path(category)
-  \|
+  -if user_signed_in?
+    %p
+      %h3 New product
+      = render 'products/form'
+  -if user_signed_in? && current_user.admin?
+    = link_to 'Edit', edit_category_path(category)
+    \|
 = link_to 'Back', categories_path, class: 'btn btn-primary'

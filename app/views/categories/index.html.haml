@@ -1,8 +1,13 @@
-%h1 Categories
-%ul
+%h1.index Categories
+%table.center.index
   - categories.each do |category|
-    %li
+    %tr
+    %td
       = link_to category.name, category_path(category)
+    %td
+      = button_to category, class: "btn btn-default", method: :get do
+        %i.glyphicon.glyphicon-eye-open
+        Show
       -if user_signed_in? && current_user.admin?
         %td= link_to 'Edit', edit_category_path(category), class: "btn btn-default"
         %td= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default"

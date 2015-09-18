@@ -3,6 +3,8 @@
     - review.rating.times do
       %span.glyphicon.glyphicon-star-empty.rating
   %p
+    = review.product.title
+  %p
     = review.content
   %footer
     = link_to review.author, user_path(review.user)

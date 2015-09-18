@@ -1,21 +1,30 @@
 %h1
   = product.title
-%p
-  = link_to category.name, category_path(category)
-  = product.price.to_s(:currency, precision: 2)
--if product.average_rating
   %p
-    - product.average_rating.round.times do
-      %span.glyphicon.glyphicon-star-empty.rating
+    = product.description
+  %p
+    Product owner:
+    = link_to user.fullname, user_path(user)
+  %p
+    %b Category:
+    = link_to category.name, category_path(category)
+  %p
+    %b Price:
+    = product.price.to_s(:currency, precision: 2)
 
-%p
-  = product.description
+  - if product.average_rating
+    %p
+      - product.average_rating.round.times do
+        %span.glyphicon.glyphicon-star-empty.rating
 
-%h3 Reviews
-= render reviews
-= render 'reviews/form'
+  - if product.reviews.any?
+    %h3 Reviews
+    = render reviews
 
--if product.user == current_user
-  = link_to 'Edit', edit_category_product_path(category.id, product.id)
-  \|
-= link_to 'Back', category_products_path, class: 'btn btn-primary'
+  - if user_signed_in?
+    = render 'reviews/form'
+
+  - if product.user == current_user
+    = link_to 'Edit', edit_category_product_path(category.id, product.id)
+    \|
+  = link_to 'Back', category_products_path, class: 'btn btn-primary'

@@ -4,6 +4,7 @@ class ProductsController < ApplicationController
   expose(:product)
   expose(:review) { Review.new }
   expose_decorated(:reviews, ancestor: :product)
+  expose_decorated(:user) {product.user}
 
   before_filter :authenticate_user!
   before_filter :another_user!, only: [:update, :edit, :destroy]

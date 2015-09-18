@@ -10,4 +10,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :users, only: :show
+  get "my_products" => "users#my_products", as: :my_products
+  get "my_product_reviews" => "users#my_product_reviews", as: :my_product_reviews
+
 end

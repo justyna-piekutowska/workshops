@@ -1,0 +1,9 @@
+%h1 My products reviews
+
+%table
+  %th Title
+  %th Review
+  %tr
+    - product.reviews.each do |review|
+      %td= product.name
+      %td= review.content

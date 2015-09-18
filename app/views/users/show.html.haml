@@ -1,21 +1,12 @@
-.row-user
-  .col-md-3.left-panel.col-height
-    = gravatar_for(user)
-    %p.text-center
-      %strong
-        = mail_to user.email
+%h1
+  .text-center
+    = user.firstname
 
-  .col-md-9.col-height
-    .main
-      %h1
-        .text-center
-          = user.firstname
-
-          = user.lastname
-      %h2
-        My reviews
-      - if reviews.empty?
-        %p
-          No reviews.
-      - else
-        = render reviews
+    = user.lastname
+%h2
+  My reviews
+- if reviews.empty?
+  %p
+    No reviews.
+- else
+  = render reviews

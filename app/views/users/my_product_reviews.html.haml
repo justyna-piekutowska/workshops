@@ -1,9 +1,18 @@
-%h1 My products reviews
+%h1
+  .text-center
+    = user.firstname
 
-%table
-  %th Title
-  %th Review
-  %tr
-    - product.reviews.each do |review|
-      %td= product.name
-      %td= review.content
+    = user.lastname
+
+%h2 My products reviews
+- if @reviews.any?
+  %table
+    %th Title
+    %th Review
+    %tr
+    - @reviews.each do |review|
+      %tr
+        %td= link_to review.product.title, category_product_path(review.product.category, review.product)
+        %td= review.content
+- else
+  You have't added any reviews yet.

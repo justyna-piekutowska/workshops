@@ -8,9 +8,17 @@ class UsersController < ApplicationController
   end
 
   def my_products
-    @products = Product.all.where(user_id: current_user.id)
+    @products = Product.all.where(user_id: params[:id])
   end
 
   def my_product_reviews
+    product = Product.where(user_id: params[:id])
+    if product.any?
+      product.each do |product|
+        @reviews = Review.where(product_id: product.id)
+      end
+    else
+      @reviews = []
+    end
   end
 end

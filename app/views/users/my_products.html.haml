@@ -1,16 +1,24 @@
-%h1 My products
+%h1
+  .text-center
+    = user.firstname
 
-%table
-  %th Title
-  %th Category
-  %th Average
-  %th Price
-- @products.each do |product|
-  %tr
-    %td= link_to product.title, category_products_path(product.category, product)
-    %td= link_to product.category.name, category_path(product.category)
-    %td
-    -if product.average_rating
-      - product.average_rating.round.times do
-        %span.glyphicon.glyphicon-star-empty.rating
-    %td= product.price
+    = user.lastname
+
+%h2 My products
+-if @products.any?
+  %table
+    %th Title
+    %th Category
+    %th Average
+    %th Price
+  - @products.each do |product|
+    %tr
+      %td= link_to product.title, category_product_path(product.category, product)
+      %td= link_to product.category.name, category_path(product.category)
+      %td
+      -if product.average_rating
+        - product.average_rating.round.times do
+          %span.glyphicon.glyphicon-star-empty.rating
+      %td= product.price
+- else
+  You don't have any products.

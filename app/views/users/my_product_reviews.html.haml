@@ -6,13 +6,13 @@
 
 %h2 My products reviews
 - if @reviews.any?
-  %table
+  %table.table
     %th Title
     %th Review
     %tr
-    - @reviews.each do |review|
-      %tr
-        %td= link_to review.product.title, category_product_path(review.product.category, review.product)
-        %td= review.content
+      - @reviews.each do |review|
+        %tr
+          %td= link_to review.product.title, category_product_path(review.product.category, review.product)
+          %td= review.content
 - else
   You have't added any reviews yet.

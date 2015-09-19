@@ -8,8 +8,7 @@
       %td= link_to product.title, category_product_path(category, product)
       %td= product.description
       %td= product.price.to_s(:currency, precision: 2)
-      %td= link_to "Show", category_product_path(product.category, product), class: "btn btn-primary"
-      %td
-        - if product.user == current_user
-          = link_to 'Edit', edit_category_product_path(product.category, product), class: "btn btn-primary"
-          = link_to 'Destroy', category_product_path(product.category, product), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-primary"
+      %td= link_to "Show", category_product_path(product.category, product), class: "btn btn-default"
+      - if product.user == current_user
+        %td= link_to 'Edit', edit_category_product_path(product.category, product), class: "btn btn-default"
+        %td= link_to 'Destroy', category_product_path(product.category, product), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default"

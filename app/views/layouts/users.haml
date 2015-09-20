@@ -28,7 +28,7 @@
           .col-md-3.left-panel.col-height
             - if user == current_user
               = gravatar_for(user)
-              %p
+              %p.text-center
                 %strong
                   = mail_to user.email
               %ul
@@ -37,7 +37,7 @@
                 %li= link_to 'Reviews to my products', my_product_reviews_path
             - else
               = gravatar_for(User.find(params[:id]))
-              %p
+              %p.text-center
                 %strong
                   = mail_to User.find(params[:id]).email
               %ul

@@ -11,7 +11,7 @@ unless User.find_by(email: "admin@yahoo.com")
   User.create(email: "admin@yahoo.com",
     firstname: FFaker::Name.first_name,
     lastname: FFaker::Name.last_name,
-    password: FFaker::Internet.password,
+    password: password123,
     admin: true
     )
 end

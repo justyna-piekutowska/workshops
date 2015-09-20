@@ -5,13 +5,17 @@
     %td
       = link_to category.name, category_path(category)
     %td
-      = button_to category, class: "btn btn-default", method: :get do
-        %i.glyphicon.glyphicon-eye-open
+      = link_to category, class: "btn btn-default", method: :get do
+        %span.glyphicon.glyphicon-eye-open
         Show
       -if user_signed_in? && current_user.admin?
-        %td= link_to 'Edit', edit_category_path(category), class: "btn btn-default"
-        %td= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default"
+        = link_to edit_category_path(category), class: "btn btn-default" do
+          %span.glyphicon.glyphicon-pencil
+          Edit
+        = link_to category, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" do
+          %span.glyphicon.glyphicon-trash
+          Delete
 
 %br
 -if user_signed_in? && current_user.admin?
-  = link_to 'New Category', new_category_path, class: "btn btn-default"
+  = link_to "New Category", new_category_path, class: "btn btn-default"

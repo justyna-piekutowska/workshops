@@ -1,23 +1,27 @@
 %h1
   = category.name
 
-%table.table
-  %th Products
-  %th Rating
-  %th Price
-  - category.products.each do |product|
-    %tr
-      %td= link_to product.title, category_product_path(category.id, product.id)
-      %td
-        - product.average_rating.round.times do
-          %span.glyphicon.glyphicon-star-empty.rating
-      %td= product.price.to_s(:currency, precision: 2)
-
--if user_signed_in?
-  %p
-    %h3 New product
-    = render 'products/form'
+%div
+  %table.table
+    %th Products
+    %th Rating
+    %th Price
+    - category.products.each do |product|
+      %tr
+        %td= link_to product.title, category_product_path(category.id, product.id)
+        %td
+          - product.average_rating.round.times do
+            %span.glyphicon.glyphicon-star-empty.rating
+        %td= product.price.to_s(:currency, precision: 2)
+%div
   -if user_signed_in? && current_user.admin?
-    = link_to 'Edit', edit_category_path(category), class: 'btn btn-default'
+    = link_to edit_category_path(category), class: "btn btn-default" do
+      %span.glyphicon.glyphicon-pencil
+      Edit
 
-= link_to 'Back', categories_path, class: 'btn btn-primary'
+  = link_to "Back", categories_path, class: "btn btn-primary"
+%div
+  -if user_signed_in?
+    %p
+      %h3 New product
+      = render 'products/form'

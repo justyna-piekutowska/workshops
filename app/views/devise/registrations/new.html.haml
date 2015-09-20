@@ -1,5 +1,5 @@
-%h2.text-center Sign up
-.center
+.col-md-6.col-md-offset-3
+  %h2 Sign up
   = simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
     = f.error_notification
     .form-inputs

@@ -31,7 +31,7 @@
                 = mail_to user.email
             %ul
               %li= link_to 'My products', my_products_path
-              %li= link_to 'My reviews', current_user
+              %li= link_to 'My reviews', user_path(params[:id])
               %li= link_to 'Reviews to my products', my_product_reviews_path
           .col-md-9.col-height
             .main

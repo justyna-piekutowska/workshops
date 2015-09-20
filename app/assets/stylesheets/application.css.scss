@@ -1,1 +1,10 @@
+@import "_variables";
+@import "_bootswatch";
 @import "bootstrap";
+
+.btn.btn-default {
+  margin: 5px;
+}
+.btn.btn-primary {
+  margin: 5px;
+}

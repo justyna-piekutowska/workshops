@@ -17,7 +17,7 @@ gem 'quiet_assets'
 gem 'jquery-rails'
 gem 'therubyracer', platforms: :ruby
 gem 'travis'
-gem 'ffaker'
+gem 'ffaker', '~> 2.0.0'
 gem 'konf'
 gem 'haml-contrib'
 gem 'rails_12factor', group: :production

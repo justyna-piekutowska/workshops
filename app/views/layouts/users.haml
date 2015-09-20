@@ -26,14 +26,24 @@
       .row
         .row-user
           .col-md-3.left-panel.col-height
-            = gravatar_for(user)
-            %p
-              %strong
-                = mail_to user.email
-            %ul
-              %li= link_to 'My products', my_products_path
-              %li= link_to 'My reviews', user_path(params[:id])
-              %li= link_to 'Reviews to my products', my_product_reviews_path
+            - if user == current_user
+              = gravatar_for(user)
+              %p
+                %strong
+                  = mail_to user.email
+              %ul
+                %li= link_to 'My products', my_products_path
+                %li= link_to 'My reviews', user_path(params[:id])
+                %li= link_to 'Reviews to my products', my_product_reviews_path
+            - else
+              = gravatar_for(User.find(params[:id]))
+              %p
+                %strong
+                  = mail_to User.find(params[:id]).email
+              %ul
+                %li= link_to 'Products', my_products_path
+                %li= link_to 'Reviews', user_path(params[:id])
+                %li= link_to 'Reviews to products', my_product_reviews_path
           .col-md-9.col-height
             .main
               = yield

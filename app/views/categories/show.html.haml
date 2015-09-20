@@ -11,7 +11,7 @@
       %td
         - product.average_rating.round.times do
           %span.glyphicon.glyphicon-star-empty.rating
-      %td= product.price
+      %td= product.price.to_s(:currency, precision: 2)
 
 -if user_signed_in?
   %p

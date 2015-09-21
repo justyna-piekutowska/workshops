@@ -3,8 +3,12 @@
     = user.firstname
 
     = user.lastname
-%h2
-  Reviews
+
+- if user == current_user
+  %h2 My reviews
+- else
+  %h2 Reviews
+
 - if reviews.empty?
   %p
     No reviews.

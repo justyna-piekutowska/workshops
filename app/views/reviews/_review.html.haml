@@ -3,7 +3,7 @@
     - review.rating.times do
       %span.glyphicon.glyphicon-star-empty.rating
   %p
-    %strong= review.product.title
+    %strong= link_to review.product.title, category_product_path(product.category, review.product.id)
   %p
     = review.content
   %footer

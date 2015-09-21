@@ -4,7 +4,11 @@
 
     = user.lastname
 
-%h2 Products
+- if user == current_user
+  %h2 My products
+- else
+  %h2 Products
+
 -if @products.any?
   %table.table
     %th Title

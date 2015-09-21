@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+
+  before_action :authenticate_user!
+
   expose(:user)
   expose(:product)
   expose_decorated(:user)

@@ -1,13 +1,14 @@
 class ProductsController < ApplicationController
+
+  before_action :authenticate_user!, only: [:update, :create, :destroy]
+  before_action :another_user!, only: [:update, :edit, :destroy]
+
   expose(:category)
   expose(:products) { category.products }
   expose(:product)
   expose(:review) { Review.new }
   expose_decorated(:reviews, ancestor: :product)
   expose_decorated(:user) {product.user}
-
-  before_filter :authenticate_user!
-  before_filter :another_user!, only: [:update, :edit, :destroy]
 
   def index
   end

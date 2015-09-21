@@ -25,8 +25,8 @@
     .container
       .row
         .col-md-12
-          -if notice
-            %p.alert.alert-success= notice
-          -if flash[:error]
-            %p.alert.alert-danger= flash[:error]
+          -if flash[:notice]
+            %p.alert.alert-success= flash[:notice]
+          -if flash[:alert]
+            %p.alert.alert-danger= flash[:alert]
           = yield

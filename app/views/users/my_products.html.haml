@@ -4,7 +4,7 @@
 
     = user.lastname
 
-%h2 My products
+%h2 Products
 -if @products.any?
   %table.table
     %th Title
@@ -21,4 +21,4 @@
               %span.glyphicon.glyphicon-star-empty.rating
         %td= product.price.to_s(:currency, precision: 2)
 - else
-  You don't have any products.
+  No products yet.
